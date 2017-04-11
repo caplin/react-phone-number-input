@@ -374,10 +374,12 @@ var Input = function (_Component) {
 			    convertToNational = _props3.convertToNational,
 			    nativeExpanded = _props3.nativeExpanded,
 			    disabled = _props3.disabled,
+			    selectTabIndex = _props3.selectTabIndex,
+			    inputTabIndex = _props3.inputTabIndex,
 			    style = _props3.style,
 			    className = _props3.className,
 			    metadata = _props3.metadata,
-			    input_props = (0, _objectWithoutProperties3.default)(_props3, ['dictionary', 'saveOnIcons', 'showCountrySelect', 'international', 'internationalIcon', 'country', 'countries', 'onCountryChange', 'flags', 'flagsPath', 'convertToNational', 'nativeExpanded', 'disabled', 'style', 'className', 'metadata']);
+			    input_props = (0, _objectWithoutProperties3.default)(_props3, ['dictionary', 'saveOnIcons', 'showCountrySelect', 'international', 'internationalIcon', 'country', 'countries', 'onCountryChange', 'flags', 'flagsPath', 'convertToNational', 'nativeExpanded', 'disabled', 'selectTabIndex', 'inputTabIndex', 'style', 'className', 'metadata']);
 			var country_select_is_shown = this.state.country_select_is_shown;
 
 
@@ -398,6 +400,7 @@ var Input = function (_Component) {
 					autocomplete: true,
 					autocompleteShowAll: true,
 					concise: true,
+					tabIndex: selectTabIndex,
 					focusUponSelection: false,
 					saveOnIcons: saveOnIcons,
 					name: input_props.name ? input_props.name + '__country' : undefined,
@@ -411,6 +414,7 @@ var Input = function (_Component) {
 					onChange: this.on_change,
 					disabled: disabled,
 					type: 'tel',
+					tabIndex: inputTabIndex,
 					parse: this.parse,
 					format: this.format,
 					onKeyDown: this.on_key_down,
@@ -507,6 +511,12 @@ Input.propTypes = {
 	// be converted to a national phone number for its country.
 	// (is `true` by default)
 	convertToNational: _react.PropTypes.bool.isRequired,
+
+	// HTML `tabindex` attribute for the country select
+	selectTabIndex: _react.PropTypes.number,
+
+	// HTML `tabindex` attribute for the phone number input
+	inputTabIndex: _react.PropTypes.number,
 
 	// CSS style object
 	style: _react.PropTypes.object,
@@ -785,7 +795,7 @@ var _initialiseProps = function _initialiseProps() {
 	};
 
 	this.country_select_toggled = function (is_shown) {
-		if (_this3.props.showAllCountriesOnFocus) {
+		if (_this3.props.showAllCountriesOnFocus && is_shown) {
 			_this3.setState({ country_code: '' });
 		}
 

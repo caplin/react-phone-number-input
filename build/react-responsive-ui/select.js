@@ -460,7 +460,8 @@ var Select = function (_PureComponent) {
 			    label = _props5.label,
 			    disabled = _props5.disabled,
 			    autocomplete = _props5.autocomplete,
-			    concise = _props5.concise;
+			    concise = _props5.concise,
+			    tabIndex = _props5.tabIndex;
 			var _state4 = this.state,
 			    expanded = _state4.expanded,
 			    autocomplete_width = _state4.autocomplete_width,
@@ -507,6 +508,7 @@ var Select = function (_PureComponent) {
 					disabled: disabled,
 					onClick: this.toggle,
 					onKeyDown: this.on_key_down,
+					tabIndex: tabIndex,
 					style: style,
 					className: (0, _classnames2.default)('rrui__input', 'rrui__select__selected', {
 						'rrui__select__selected--nothing': !selected_label
@@ -1053,6 +1055,9 @@ Select.propTypes = {
 	// then the selected option will be displayed
 	// as icon only, without the label.
 	concise: _react.PropTypes.bool,
+
+	// HTML `tabindex` attribute
+	tabIndex: _react.PropTypes.number,
 
 	// If set to `true`, autocompletion is available
 	// upon expanding the options list.

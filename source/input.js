@@ -568,8 +568,8 @@ export default class Input extends Component
 	// When country `<select/>` is toggled
 	country_select_toggled = (is_shown) =>
 	{
-		if(this.props.showAllCountriesOnFocus){
-			this.setState({ country_code: '' });			
+		if(this.props.showAllCountriesOnFocus && is_shown){
+			this.setState({ country_code: '' });
 		}
 
 		this.setState({ country_select_is_shown: is_shown })
