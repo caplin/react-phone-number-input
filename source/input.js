@@ -123,6 +123,9 @@ export default class Input extends Component
 		// CSS style object
 		style : PropTypes.object,
 
+		// Should all countries be shown when clicking on the flag icon?
+		showAllCountriesOnFocus : PropTypes.bool,
+
 		// CSS class
 		className : PropTypes.string,
 
@@ -164,7 +167,9 @@ export default class Input extends Component
 
 		// Convert the initially passed phone number `value`
 		// to a national phone number for its country.
-		convertToNational: true
+		convertToNational: true,
+
+		showAllCountriesOnFocus: false
 	}
 
 	state = {}
@@ -563,6 +568,10 @@ export default class Input extends Component
 	// When country `<select/>` is toggled
 	country_select_toggled = (is_shown) =>
 	{
+		if(this.props.showAllCountriesOnFocus){
+			this.setState({ country_code: '' });			
+		}
+
 		this.setState({ country_select_is_shown: is_shown })
 	}
 
