@@ -259,7 +259,7 @@ export default class Input extends Component
 	{
 		const { metadata, convertToNational } = this.props
 
-		if (!value)
+		if (typeof value === 'undefined')
 		{
 			return
 		}
@@ -284,23 +284,12 @@ export default class Input extends Component
 				// Else the leading + sign is trimmed.
 				return value.slice(1)
 			}
-
-			// Else the value stays as it is
-			return value
 		}
 
 		// The country is not set.
 		// Assuming that's an international phone number.
 
-		// If the value has a leading + sign
-		if (value[0] === '+')
-		{
-			// The value is correct
-			return value
-		}
-
-		// The + sign is prepended
-		return '+' + value
+		return value
 	}
 
 	set_country_code_value(country_code)
@@ -626,6 +615,14 @@ export default class Input extends Component
 					this.set_country(new_props.country, false)
 				}
 			}
+		}
+
+		if (new_props.value !== value)
+		{
+			this.setState
+			({
+				value: this.correct_initial_value_if_neccessary(new_props.value)
+			});
 		}
 	}
 
