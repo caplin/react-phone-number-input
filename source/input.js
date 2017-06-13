@@ -292,13 +292,6 @@ export default class Input extends Component
 		// The country is not set.
 		// Assuming that's an international phone number.
 
-		// If the value has a leading + sign
-		if (value[0] === '+')
-		{
-			// The value is correct
-			return value
-		}
-
 		return value
 	}
 
