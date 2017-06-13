@@ -284,9 +284,6 @@ export default class Input extends Component
 				// Else the leading + sign is trimmed.
 				return value.slice(1)
 			}
-
-			// Else the value stays as it is
-			return value
 		}
 
 		// The country is not set.
